@@ -32,7 +32,7 @@ inquirer
 },
 {
     type: 'input',
-    message: 'list any contributors of the project: First Name, Last Name, Github Username',
+    message: 'list any contributors of the project: (Format First Name, Last Name, Github Username)',
     name: 'contributors',
 },
 {
@@ -49,6 +49,7 @@ inquirer
 
 ])
 .then((response) => {
+assignLicense(response.license_choice)
 const readMeText = `
 ## DESCRIPTION
 ${response.description}
@@ -66,3 +67,18 @@ err ? console.error(err) : console.log('Success!')
 );
 
 });
+
+
+function assignLicense(license) {
+    console.log(license)
+    if (license === 'MIT'){
+
+    }
+    if (license === 'GNU'){
+
+    }
+    if (license ==='Apache'){
+
+    }
+
+}
