@@ -76,7 +76,7 @@ async function main() {
     })
     const orderList = await getList()
     const getOrder = await inquirer.prompt(genList(orderList))
-    const getConfirm = await inquirer.prompt(confirmUpdate(getOrder.orders))
+    const getConfirm = await inquirer.prompt(confirmPrint(licenseSelection))
 
     if(getConfirm.toUpdate) {
         console.log('to update', getOrder.orders, 'for account', getAccount.account)

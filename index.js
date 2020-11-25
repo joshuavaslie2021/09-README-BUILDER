@@ -5,8 +5,8 @@ const genList = (list) => {
     const licChoices = list.map((license,index) => {
         return {
             key: index,
-            name: license.id,
-            value: license.value
+            name: `${license.id}`,
+            value: `${license.value}`,
         }
      })
         return {
@@ -17,13 +17,13 @@ const genList = (list) => {
         }
 
 }
-const getLicenseList = () => {
+const getLicenseList = (year) => {
          return Promise.resolve([
             {
                 id: 'MIT',
                 value:`                          MIT_License:MIT License
 
-                //             Copyright (c) [] []
+                //             Copyright (c) [${year}] []
 
                 //             Permission is hereby granted, free of charge, to any person obtaining a copy
                 //             of this software and associated documentation files (the "Software"), to deal
@@ -233,7 +233,7 @@ const getLicenseList = () => {
                 //             same "printed page" as the copyright notice for easier
                 //             identification within third-party archives.
 
-                //             Copyright [] []
+                //             Copyright [${year}] []
 
                 //             Licensed under the Apache License, Version 2.0 (the "License");
                 //             you may not use this file except in compliance with the License.
@@ -415,22 +415,23 @@ const getLicenseList = () => {
                 //             permanent authorization for you to choose that version for the
                 //             Library.`,
             }
-    ])
-}
-// const bodyPrompts = () => {
-//     return ([
-//         {
-//         type:'confirm',
-//         name:'printReadMe',
-//         message:'print new README.md file?'
-//         },
-//         {
-//         type:'input',
-//         name:'etc',
-//         message:'etc',
-//         }
-// ])}
+    ])}
 
+    const confirmUpdate = (title) => {
+        return ([
+            {
+            type: 'input',
+            name: 'description',
+            message: `please provide a description for project ${title}?`
+            },
+            {
+            type:'input',
+            name:'installation',
+            message:'install info'
+            }
+        ]
+        )
+    }
 async function main () {
     const getUserInfo = await inquirer.prompt([
     {
@@ -453,67 +454,47 @@ async function main () {
         message: 'enter your email address:',
         name: 'email',
     },
-    {
-        type: 'input',
-        message: 'provide link to github profile',
-        name: 'github',
-    },
-    {
-        type: 'input',
-        message: 'briefly describe your project',
-        name: 'description',
-    },
-    {
-        type: 'input',
-        message: 'briefly outline your installation instructions',
-        name: 'installation',
-    },
-    {
-        type: 'input',
-        message: 'describe the usage of the project',
-        name: 'usage',
-    },
+    
     {
         type: 'input',
         message: 'list any contributors of the project: (Format First Name, Last Name, Github Username)',
         name: 'contributors',
     },
-    {
-        type: 'input',
-        message: 'test input',
-        name: 'tests',
-    },
+  
     {
         type: 'input',
         message: 'complete READMe.md body?',
         name: 'completeReadMe',
     },
 ])
-    
-    const licenseList = await getLicenseList()
+    let devYear = getUserInfo.year
+    const licenseList = await getLicenseList(devYear)
     const licenseSelection = await inquirer.prompt(genList(licenseList))
-    
-  
-const readMeText = `
+    const getConfirm = await inquirer.prompt(confirmUpdate(getUserInfo.title))
+    console.log(getConfirm)
+    // if (getConfirm.toUpdate) {
+        
+    // }
+    // else{}
+    const readMeText = `
 ## ${getUserInfo.title}
 ## DESCRIPTION
-${getUserInfo.description}
+${getConfirm.description}
 ## Table of Contents 
-
 * [Installation](#installation)
 * [Usage](#usage)
 * [Contributions_&_Credits](#contributions_&_credits)
 * [Licensing](#licensing)
-
-
 ## INSTALLATION
-${getUserInfo.installation}
+${getConfirm.installation}
 ## USAGE
-${getUserInfo.usage}
-## CONTRIBUTIONS & Credits
+${getConfirm.usage}
+## CONTRIBUTIONS & CREDITS
 ${getUserInfo.contributors}
 ## LICENSING
-${licenseSelection}`
+${licenseSelection.license_choice}`
+    
+
 fs.writeFile(`README.md`, readMeText, (err) =>
 err ? console.error(err) : console.log('Success!'))
 }
