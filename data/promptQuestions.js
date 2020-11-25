@@ -46,11 +46,6 @@ const inquirer = require('inquirer');
         },
         {
             type: 'input',
-            message: 'provide link to github profile',
-            name: 'github',
-        },
-        {
-            type: 'input',
             message: 'describe the usage of the project',
             name: 'usage',
         },
