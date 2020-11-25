@@ -417,16 +417,23 @@ const getLicenseList = () => {
             }
     ])
 }
-const confirmPrint = () => {
-    return {
-        type:'confirm',
-        name:'printReadMe',
-        message:'print new README.md file?'
-    }
-}
-const fs = require('fs');
+// const bodyPrompts = () => {
+//     return ([
+//         {
+//         type:'confirm',
+//         name:'printReadMe',
+//         message:'print new README.md file?'
+//         },
+//         {
+//         type:'input',
+//         name:'etc',
+//         message:'etc',
+//         }
+// ])}
+
 async function main () {
-    const getUserInfo = await inquirer.prompt({
+    const getUserInfo = await inquirer.prompt([
+    {
         type: 'input',
         message: 'please enter developer(s) names',
         name: 'name',
@@ -440,92 +447,77 @@ async function main () {
         type: 'input',
         message: 'input year project was completed:',
         name: 'year',
-    })
-
+    },
+    {
+        type: 'input',
+        message: 'enter your email address:',
+        name: 'email',
+    },
+    {
+        type: 'input',
+        message: 'provide link to github profile',
+        name: 'github',
+    },
+    {
+        type: 'input',
+        message: 'briefly describe your project',
+        name: 'description',
+    },
+    {
+        type: 'input',
+        message: 'briefly outline your installation instructions',
+        name: 'installation',
+    },
+    {
+        type: 'input',
+        message: 'describe the usage of the project',
+        name: 'usage',
+    },
+    {
+        type: 'input',
+        message: 'list any contributors of the project: (Format First Name, Last Name, Github Username)',
+        name: 'contributors',
+    },
+    {
+        type: 'input',
+        message: 'test input',
+        name: 'tests',
+    },
+    {
+        type: 'input',
+        message: 'complete READMe.md body?',
+        name: 'completeReadMe',
+    },
+])
+    
     const licenseList = await getLicenseList()
     const licenseSelection = await inquirer.prompt(genList(licenseList))
-    const getConfirm = await inquirer.prompt(confirmPrint(licenseSelection))
-    if (getConfirm.printReadMe) {
-        const readMeText = `
-            ## ${getUserInfo.title}
-            ## DESCRIPTION
-            ${getUserInfo.description}
-            ## Table of Contents 
+    
+  
+const readMeText = `
+## ${getUserInfo.title}
+## DESCRIPTION
+${getUserInfo.description}
+## Table of Contents 
 
-            * [Installation](#installation)
-            * [Usage](#usage)
-            * [Contributions_&_Credits](#contributions_&_credits)
-            * [Licensing](#licensing)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Contributions_&_Credits](#contributions_&_credits)
+* [Licensing](#licensing)
 
 
-            ## INSTALLATION
-            ${getUserInfo.installation}
-            ## USAGE
-            ${getUserInfo.usage}
-            ## CONTRIBUTIONS & Credits
-            ${getUserInfo.contributors}
-            ## LICENSING
-            ${licenseSelection}`
-    fs.writeFile(`README.md`, readMeText, (err) =>
-    err ? console.error(err) : console.log('Success!')
-    )
-    }
-    else{
-        return
-    }
+## INSTALLATION
+${getUserInfo.installation}
+## USAGE
+${getUserInfo.usage}
+## CONTRIBUTIONS & Credits
+${getUserInfo.contributors}
+## LICENSING
+${licenseSelection}`
+fs.writeFile(`README.md`, readMeText, (err) =>
+err ? console.error(err) : console.log('Success!'))
 }
-//
-// {
-//     type: 'input',
-//     message: 'enter your email address:',
-//     name: 'email',
-// },
-// {
-//     type: 'input',
-//     message: 'provide link to github profile',
-//     name: 'github',
-// },
-// {
-//     type: 'input',
-//     message: 'input year project was completed:',
-//     name: 'year',
-// },
-// {
-//     type: 'input',
-//     message: 'briefly describe your project',
-//     name: 'description',
-// },
-// {
-//     type: 'input',
-//     message: 'briefly outline your installation instructions',
-//     name: 'installation',
-// },
-// {
-//     type: 'input',
-//     message: 'describe the usage of the project',
-//     name: 'usage',
-// },
-// {
-//     type: 'input',
-//     message: 'list any contributors of the project: (Format First Name, Last Name, Github Username)',
-//     name: 'contributors',
-// },
-// {
-//     type: 'input',
-//     message: 'test input',
-//     name: 'tests',
-// },
-// {
-//     type:'rawlist',
-//     message: 'select your choice of licensing',
-//     choices: ["MIT","GNU","Apache"],
-//     name: 'license_choice',
-// }
-// ]).then((answers) => {
-//     console.log(answers)
-//     var title = String(answers.title);
-//     var titleName = title.toUpperCase();
-//     let licenseChoice = answers.license_choice
+
 
 
 
