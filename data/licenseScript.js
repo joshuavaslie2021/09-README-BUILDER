@@ -1,7 +1,8 @@
 const licenseArray = [
-{"MIT": `                       MIT_License:MIT License
+{name:"MIT",
+ value: `                       MIT_License:MIT License
 
-Copyright (c) [${year}] [${name}]
+Copyright (c) [] []
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,8 +20,10 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.`},
-{'Apache':`                           Apache License
+SOFTWARE.`
+},
+{name:'Apache',
+ value:`                           Apache License
     Version 2.0, January 2004
     http://www.apache.org/licenses/
     
@@ -208,7 +211,7 @@ SOFTWARE.`},
     same "printed page" as the copyright notice for easier
     identification within third-party archives.
     
-    Copyright [${year}] [${name}]
+    Copyright [] []
     
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -222,7 +225,8 @@ SOFTWARE.`},
     See the License for the specific language governing permissions and
     limitations under the License.`,
 },
-{'GNU':`                   GNU LESSER GENERAL PUBLIC LICENSE
+{name:'GNU',
+ value:`                   GNU LESSER GENERAL PUBLIC LICENSE
     Version 3, 29 June 2007
     
     Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
@@ -387,7 +391,9 @@ SOFTWARE.`},
     apply, that proxy's public statement of acceptance of any version is
     permanent authorization for you to choose that version for the
     Library.`,
-    }   ]
-module.exports= {
-    licenseOptions:licenseArray,
+}
+]
+
+module.exports = {
+    licenses:licenseArray,
 }
