@@ -1,8 +1,8 @@
 const licenseArray = [
     {name:"MIT License",
-     title:"MIT License",
      value:
-`Permission is hereby granted, free of charge, to any person obtaining a copy
+`MIT_LICENSE~
+Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
@@ -20,10 +20,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.`
     },
-    {name:'APACHE License',
-     title:'APACHE License',
+    {name:'Apache License',
      value:
-`Version 2.0, January 2004
+`APACHE_License~
+Version 2.0, January 2004
 http://www.apache.org/licenses/
 
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
@@ -225,9 +225,9 @@ See the License for the specific language governing permissions and
 limitations under the License.`,
     },
     {name:'GNU LESSER GENERAL PUBLIC LICENSE',
-     title:'GNU LESSER GENERAL PUBLIC LICENSE',
      value:
-    `Version 3, 29 June 2007
+`GNU_LESSER_GENERAL_PUBLIC_LICENSE~
+Version 3, 29 June 2007
 
 Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
 Everyone is permitted to copy and distribute verbatim copies

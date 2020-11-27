@@ -1,6 +1,6 @@
 
 const inquirer = require('inquirer');
-const { questions, extendedPrompts } = require('./data/promptQuestions');
+const { questions, extendedPrompts,contributorPrompt, contributors } = require('./data/promptQuestions');
 const { licenses } = require('./data/licenseScript');
 const getLicenseList = (licenses) => {
     return {
@@ -12,34 +12,35 @@ const getLicenseList = (licenses) => {
 };
 const main = async () => {
     const startUpPrompts = await inquirer.prompt(questions);
-    
+    let writeCompleteReadme
     if (startUpPrompts.completeReadMe) {
-        var writeCompleteReadme = await inquirer.prompt(extendedPrompts)
+        writeCompleteReadme = await inquirer.prompt(extendedPrompts)
     }
     else{
-        var writeCompleteReadme = {
+        writeCompleteReadme = {
             description: 'Sample Description to be updated later formally',
             installation: 'Placeholder for Installation instructions if pending',
             usage: 'sample',
             tests: 'sample'
         }
     }
-    
-    // if (startUpPrompts.contributors) {
-    // printReadMe(startUpPrompts,writeCompleteReadme)
-    // }
+    let contributorInput
+    if (startUpPrompts.contributors) {
+     contributorInput = await inquirer.prompt(contributors)
+    }
     const licensePrompt = await inquirer.prompt(getLicenseList(licenses));
-    printReadMe(startUpPrompts,writeCompleteReadme,licensePrompt);
+    printReadMe(startUpPrompts,writeCompleteReadme,licensePrompt,contributorInput);
 }
-const printReadMe = (startUpPrompts,writeCompleteReadme,licensePrompt) => {
+const printReadMe = (startUpPrompts,writeCompleteReadme,licensePrompt,contributorInput) => {
 let title = String(startUpPrompts.title).toUpperCase();
-// let licenseTitle = licensePrompt.license_choice.name
-let licenseText = licensePrompt.license_choice
 let copyRightLine = `Copyright (c) [${startUpPrompts.year}] [${startUpPrompts.name}]`
 let description = writeCompleteReadme.description;
 let usage = writeCompleteReadme.usage;
+let contributors = contributorInput.contributors;
 let install = writeCompleteReadme.installation;
-
+const licenseData = String(licensePrompt.license_choice).split('~',2)
+const licenseTitle = licenseData[0]
+const licenseBody = licenseData[1]
 const fs = require('fs');
 const readMeText = 
 `## ${title}
@@ -55,12 +56,11 @@ ${install}
 ## USAGE
 ${usage}
 ## CONTRIBUTIONS & CREDITS
-
+${contributors}
 ## LICENSING
-
+${licenseTitle}
 ${copyRightLine}
-
-${licenseText}`
+${licenseBody}`
 fs.writeFile(`README.md`, readMeText, (err) =>
 err ? console.error(err) : console.log('Success!'))
 };

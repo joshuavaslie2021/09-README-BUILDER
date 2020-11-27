@@ -54,10 +54,14 @@ const inquirer = require('inquirer');
             message: 'test input',
             name: 'tests',
         },
-        
     ]
-    
+    const contributorObj = {
+        type:'input',
+        name:'contributors',
+        message:'list contributors of project (format: First Name, Last Name)'
+    }
 module.exports = {
     questions:startPrompt,
-    extendedPrompts:fullReadMe
+    extendedPrompts:fullReadMe,
+    contributors:contributorObj
 }
