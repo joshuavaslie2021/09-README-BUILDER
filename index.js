@@ -1,7 +1,4 @@
-
-const inquirer = require('inquirer');
 const { questions, extendedPrompts, contributorPrompt } = require('./data/promptQuestions');
-const { licenses } = require('./data/licenseScript');
 const getLicenseList = (licenses) => {
     return {
         type:'rawlist',
@@ -11,6 +8,7 @@ const getLicenseList = (licenses) => {
     }
 };
 const main = async () => {
+    const inquirer = require('inquirer');
     const startUpPrompts = await inquirer.prompt(questions);
     let writeCompleteReadme
     if (startUpPrompts.completeReadMe) {
@@ -27,14 +25,13 @@ const main = async () => {
     let contributorInput
     if (startUpPrompts.contributors) {
      contributorInput = await inquirer.prompt(contributorPrompt)
-     console.log(contributorInput)
     }
     if (startUpPrompts.contributors === false) {
         contributorInput  = {
             contributors:''
         }
     }
-    
+    const { licenses } = require('./data/licenseScript');
     const licensePrompt = await inquirer.prompt(getLicenseList(licenses));
     printReadMe(startUpPrompts,writeCompleteReadme,licensePrompt,contributorInput);
 }
@@ -44,11 +41,10 @@ let copyRightLine = `Copyright (c) [${startUpPrompts.year}] [${startUpPrompts.na
 let description = writeCompleteReadme.description;
 let usage = writeCompleteReadme.usage;
 let contributors = contributorInput.contributors;
-console.log(contributors)
 let install = writeCompleteReadme.installation;
 const licenseData = String(licensePrompt.license_choice).split('~',3)
-const licenseBody = licenseData[0]
-const licenseBody2 = licenseData[2]
+const licenseBody = licenseData[0];
+const licenseBody2 = licenseData[2];
 const fs = require('fs');
 const readMeText = 
 `## ${title}
