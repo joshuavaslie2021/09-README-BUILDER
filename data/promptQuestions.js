@@ -63,5 +63,5 @@ const inquirer = require('inquirer');
 module.exports = {
     questions:startPrompt,
     extendedPrompts:fullReadMe,
-    contributors:contributorObj
+    contributorPrompt:contributorObj,
 }
