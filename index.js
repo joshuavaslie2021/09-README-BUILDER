@@ -1,4 +1,3 @@
-const { start } = require('repl');
 const { questions, extendedPrompts, contributorPrompt } = require('./data/promptQuestions');
 const getLicenseList = (licenses) => {
     return {
@@ -45,7 +44,8 @@ let usage = writeCompleteReadme.usage;
 let install = writeCompleteReadme.installation;
 let contributors = contributorInput.contributors;
 let githubUser = startUpPrompts.github;
-const questionText = `If you have any questions or concerns in regards to the project, please reach out to the developer via Github: ${githubUser} or Email: ${startUpPrompts.email}`
+const questionText = `If you have any questions or concerns in regards to the project, please reach out to the developer via
+ Github: ${githubUser} or Email: ${startUpPrompts.email}`
 const licenseData = String(licensePrompt.license_choice).split('~',4)
 const licenseBody = licenseData[0];
 const licenseBody2 = licenseData[2];
@@ -84,6 +84,7 @@ ${contributors}
 ${questionText}
 
 ## LICENSING  
+
 ${licenseBody}
 
 ${copyRightLine}
