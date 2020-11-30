@@ -39,7 +39,7 @@ const main = async () => {
 }
 const printReadMe = (startUpPrompts,writeCompleteReadme,licensePrompt,contributorInput) => {
 let title = String(startUpPrompts.title).toUpperCase();
-let copyRightLine = `Copyright (c) [${startUpPrompts.year}] [ ${startUpPrompts.name} ${contributorInput.contributors}]`
+let copyRightLine = `Copyright (c) [${startUpPrompts.year}] [${startUpPrompts.name}]`
 let description = writeCompleteReadme.description;
 let usage = writeCompleteReadme.usage;
 let install = writeCompleteReadme.installation;
@@ -53,6 +53,7 @@ const licenseBadge = licenseData[3]
 const fs = require('fs');
 const readMeText = 
 `## ${title} 
+
 ${licenseBadge}
 
 ## DESCRIPTION
