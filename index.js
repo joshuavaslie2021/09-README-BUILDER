@@ -85,7 +85,6 @@ ${questionText}
 ## LICENSING  
 ${licenseBody}
 
-
 ${copyRightLine}
 
 ${licenseBody2}`;

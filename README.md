@@ -20,6 +20,8 @@ Placeholder for Installation instructions if pending
 
 Usage of Project/Application to be updated
 
+[Example app usage](https://youtubelink)
+
 ## CONTRIBUTIONS_&_CREDITS
 
 
@@ -29,7 +31,8 @@ Usage of Project/Application to be updated
 If you have any questions or concerns in regards to the project, please reach out to the developer via Github: joshuavaslie2021 or Email: joshuavaslie2021@u.northwestern.edu
 
 ## LICENSING  
-                     MIT License
+
+MIT License
 
 
 

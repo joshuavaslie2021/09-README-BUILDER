@@ -1,6 +1,6 @@
 const licenseArray = [
 {name:"MIT",
-value:`                     MIT License
+value:`MIT License
 
 ~Copyright (c) [year] [fullname]~
 
@@ -23,7 +23,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.~[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`,
 },
 {name:'Apache 2.0',
-value:`                Apache License
+value:`Apache License
 Version 2.0, January 2004
 http://www.apache.org/licenses/
 
@@ -226,7 +226,7 @@ See the License for the specific language governing permissions and
 limitations under the License.~[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`,
 },
 {name:'GPL 3.0',
-value:`                GNU GENERAL PUBLIC LICENSE
+value:`GNU GENERAL PUBLIC LICENSE
 Version 3, 29 June 2007
 
 Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
@@ -902,7 +902,7 @@ Public License instead of this License.  But first, please read
 <https://www.gnu.org/licenses/why-not-lgpl.html>.~[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)`,
 },
 {name: 'BSD 3',
-value:`                 BSD 3-Clause License
+value:`BSD 3-Clause License
 
 ~Copyright (c) [year], [fullname]~
 All rights reserved.
