@@ -1,3 +1,4 @@
+const { start } = require('repl');
 const { questions, extendedPrompts, contributorPrompt } = require('./data/promptQuestions');
 const getLicenseList = (licenses) => {
     return {
@@ -5,7 +6,7 @@ const getLicenseList = (licenses) => {
         message: 'select your choice of licensing',
         name: 'license_choice',
         choices: licenses,
-    }
+    };
 };
 const main = async () => {
     const inquirer = require('inquirer');
@@ -24,7 +25,7 @@ const main = async () => {
     }
     let contributorInput
     if (startUpPrompts.contributors) {
-     contributorInput = await inquirer.prompt(contributorPrompt)
+         contributorInput = await inquirer.prompt(contributorPrompt)
     }
     if (startUpPrompts.contributors === false) {
         contributorInput  = {
@@ -37,34 +38,55 @@ const main = async () => {
 }
 const printReadMe = (startUpPrompts,writeCompleteReadme,licensePrompt,contributorInput) => {
 let title = String(startUpPrompts.title).toUpperCase();
-let copyRightLine = `Copyright (c) [${startUpPrompts.year}] [${startUpPrompts.name}${contributorInput.contributors}]`
+let copyRightLine = `Copyright (c) [${startUpPrompts.year}] [ ${startUpPrompts.name} ${contributorInput.contributors}]`
 let description = writeCompleteReadme.description;
 let usage = writeCompleteReadme.usage;
+let install = writeCompleteReadme.install;
 let contributors = contributorInput.contributors;
-let install = writeCompleteReadme.installation;
-const licenseData = String(licensePrompt.license_choice).split('~',3)
+let githubUser = startUpPrompts.github;
+const questionText = `If you have any questions or concerns in regards to the project, please reach out to the developer via Github: ${githubUser} or Email: ${startUpPrompts.email}`
+const licenseData = String(licensePrompt.license_choice).split('~',4)
 const licenseBody = licenseData[0];
 const licenseBody2 = licenseData[2];
+const licenseBadge = licenseData[3]
 const fs = require('fs');
 const readMeText = 
-`## ${title}
+`## ${title} ${licenseBadge}
+
 ## DESCRIPTION
+
 ${description}
+
 ## Table of Contents 
-* [Installation](#installation)
-* [Usage](#usage)
-* [Contributions_&_Credits](#contributions_&_credits)
-* [Licensing](#licensing)
+
+* [Installation](#INSTALLATION)
+* [Usage](#USAGE)
+* [Contributions_&_Credits](#CONTRIBUTIONS & CREDITS)
+* [Licensing](#LICENSING)
+
 ## INSTALLATION
+
 ${install}
+
 ## USAGE
+
 ${usage}
+
 ## CONTRIBUTIONS & CREDITS
+
 ${contributors}
-## LICENSING
+
+## QUESTIONS
+
+${questionText}
+
+## LICENSING  
 ${licenseBody}
+
+
 ${copyRightLine}
-${licenseBody2}`
+
+${licenseBody2}`;
 fs.writeFile(`README.md`, readMeText, (err) =>
 err ? console.error(err) : console.log('Success!'))
 };
