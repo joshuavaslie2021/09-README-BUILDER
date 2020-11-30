@@ -14,7 +14,7 @@ Sample Description to be updated later formally
 
 ## INSTALLATION
 
-undefined
+Placeholder for Installation instructions if pending
 
 ## USAGE
 

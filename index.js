@@ -29,9 +29,10 @@ const main = async () => {
     }
     if (startUpPrompts.contributors === false) {
         contributorInput  = {
-            contributors:''
+            contributors:'N/A'
         }
     }
+    
     const { licenses } = require('./data/licenseScript');
     const licensePrompt = await inquirer.prompt(getLicenseList(licenses));
     printReadMe(startUpPrompts,writeCompleteReadme,licensePrompt,contributorInput);
@@ -41,7 +42,7 @@ let title = String(startUpPrompts.title).toUpperCase();
 let copyRightLine = `Copyright (c) [${startUpPrompts.year}] [ ${startUpPrompts.name} ${contributorInput.contributors}]`
 let description = writeCompleteReadme.description;
 let usage = writeCompleteReadme.usage;
-let install = writeCompleteReadme.install;
+let install = writeCompleteReadme.installation;
 let contributors = contributorInput.contributors;
 let githubUser = startUpPrompts.github;
 const questionText = `If you have any questions or concerns in regards to the project, please reach out to the developer via Github: ${githubUser} or Email: ${startUpPrompts.email}`
@@ -62,7 +63,7 @@ ${description}
 
 * [Installation](#INSTALLATION)
 * [Usage](#USAGE)
-* [Contributions_&_Credits](#CONTRIBUTIONS & CREDITS)
+* [Contributions_&_Credits](#CONTRIBUTIONS_&_CREDITS)
 * [Licensing](#LICENSING)
 
 ## INSTALLATION
@@ -73,7 +74,7 @@ ${install}
 
 ${usage}
 
-## CONTRIBUTIONS & CREDITS
+## CONTRIBUTIONS_&_CREDITS
 
 ${contributors}
 
