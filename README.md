@@ -17,15 +17,15 @@ This week's homework we were tasked with writing jscript outside of the console 
 
 Since the application is off the console, in order to run the local machine must have node.js installed, as well as inquirer npm. Links to both are provided.
 
-[!Inquirer NPM](https://www.npmjs.com/package/inquirer)
+[Inquirer NPM](https://www.npmjs.com/package/inquirer)
 
-[!Node](https://nodejs.org/en/)
+[Node](https://nodejs.org/en/)
 
 ## USAGE
 
 My intended usage for the project, to represent a clean work example for employers, was to go above and beyond to create a script that will be useful for all of my future developments. I completed the project using synchronous as well as asynchronous functions - with async being the default and most complete js (index.js contains async). The prompts retrieve all necessary input to complete a readme to 100%.
 
-[!App Install/Usage Walkthrough](https://www.youtube.com/watch?v=0D9PsxAMpG4)
+[App Install/Usage Walkthrough](https://www.youtube.com/watch?v=0D9PsxAMpG4)
 
 ## CONTRIBUTIONS_&_CREDITS
 
