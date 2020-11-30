@@ -51,7 +51,8 @@ const licenseBody2 = licenseData[2];
 const licenseBadge = licenseData[3]
 const fs = require('fs');
 const readMeText = 
-`## ${title} ${licenseBadge}
+`## ${title} 
+${licenseBadge}
 
 ## DESCRIPTION
 
