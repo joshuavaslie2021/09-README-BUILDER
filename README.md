@@ -9,7 +9,7 @@ Sample Description to be updated later formally
 
 * [Installation](#INSTALLATION)
 * [Usage](#USAGE)
-* [Contributions_&_Credits](#CONTRIBUTIONS & CREDITS)
+* [Contributions_&_Credits](#CONTRIBUTIONS_&_CREDITS)
 * [Licensing](#LICENSING)
 
 ## INSTALLATION
@@ -20,7 +20,7 @@ Placeholder for Installation instructions if pending
 
 Usage of Project/Application to be updated
 
-## CONTRIBUTIONS & CREDITS
+## CONTRIBUTIONS_&_CREDITS
 
 
 
