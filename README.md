@@ -4,7 +4,7 @@
 
 ## DESCRIPTION
 
-This week's homework we were tasked with writing jscript outside of the console - using node.js to run a script off the web. The application needed to take in input provided by the developer, to dynamically create a README.md file in a clean, organized format.
+This week's homework we were tasked with writing jscript outside of the console using node.js. The application needed to take in input provided by the developer to dynamically create a README.md file in a clean, organized format.
 
 ## Table of Contents 
 
